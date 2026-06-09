@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Robot Sky Jump</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="game-container">
+
+    <!-- ============================================
+         CANVAS — Area Render Gameplay
+         ============================================ -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- ============================================
+         SOUND TOGGLE BUTTON
+         ============================================ -->
+    <button id="soundToggleBtn" title="Toggle Suara">🔊</button>
+
+    <!-- ============================================
+         HUD — Skor & Tinggi saat Bermain
+         ============================================ -->
+    <div id="hud" class="hidden">
+        <div class="hud-item">
+            <span>🧸</span>
+            <span id="scoreText">0</span>
+        </div>
+        <div class="hud-item">
+            <span>⭐</span>
+            <span id="heightText">0</span>
+        </div>
+    </div>
+
+    <!-- ============================================
+         TOUCH CONTROLS — Tombol Kiri & Kanan
+         ============================================ -->
+    <div id="controls" class="hidden">
+        <div id="btn-left"  class="control-btn"></div>
+        <div id="btn-right" class="control-btn"></div>
+    </div>
+
+    <!-- ============================================
+         START SCREEN — Menu Utama
+         ============================================ -->
+    <div id="startScreen" class="overlay">
+
+        <!-- Judul Game -->
+        <div class="title-text animate-bounce">
+            Robot<br>Sky<br>Jump
+        </div>
+
+        <!-- Form Nama Pemain -->
+        <div class="name-box">
+            <label for="playerNameInput">Nama Pelompat:</label>
+            <div class="name-input-row">
+                <input
+                    type="text"
+                    id="playerNameInput"
+                    maxlength="12"
+                    placeholder="Tulis namamu..."
+                    autocomplete="off"
+                >
+                <button id="aiNameBtn" title="Minta saran nama dari AI">
+                    ✨ Nama
+                </button>
+            </div>
+        </div>
+
+        <!-- Daily Challenge Banner -->
+        <div id="dailyChallengeBox">
+            <span class="challenge-label">✨ Tantangan Hari Ini:</span>
+            <span id="dailyChallengeText">Membuat peluncuran roket bertenaga AI... 🚀</span>
+        </div>
+
+        <!-- Tombol Aksi -->
+        <button id="startBtn" class="btn">Mainkan! 🚀</button>
+        <button id="lbBtn"    class="btn btn-blue">🏆 Papan Peringkat</button>
+
+        <!-- Petunjuk Kontrol -->
+        <div class="controls-hint">
+            Gunakan tombol
+            <kbd>A</kbd> (Kiri) &amp; <kbd>D</kbd> (Kanan) di Keyboard
+        </div>
+
+    </div><!-- /#startScreen -->
+
+    <!-- ============================================
+         LEADERBOARD SCREEN — Papan Peringkat
+         ============================================ -->
+    <div id="leaderboardScreen" class="overlay hidden">
+        <div id="leaderboardContainer">
+
+            <div class="lb-title">🏆 Top 10 Pelompat</div>
+
+            <!-- Daftar Skor — diisi via JavaScript -->
+            <div id="lbList" class="lb-list"></div>
+
+            <button id="closeLbBtn" class="btn btn-blue">Kembali ke Menu</button>
+
+        </div>
+    </div><!-- /#leaderboardScreen -->
+
+    <!-- ============================================
+         GAME OVER SCREEN
+         ============================================ -->
+    <div id="gameOverScreen" class="overlay hidden">
+
+        <!-- Judul Game Over -->
+        <div class="gameover-title animate-bounce">Waduh, Jatuh!</div>
+
+        <!-- Skor Akhir -->
+        <div class="final-score-box">
+            <span class="final-score-label">Skor Akhir Anda</span>
+            <span id="finalScore">0</span>
+        </div>
+
+        <!-- AI Coach Feedback -->
+        <div id="aiFeedbackBox">
+            <div class="ai-coach-badge">🤖 Pelatih AI</div>
+            <div id="aiFeedback">Sedang mengamati sisa oli mesinmu... 🛠️</div>
+        </div>
+
+        <!-- Tombol Aksi -->
+        <button id="restartBtn"    class="btn">Main Lagi 🔄</button>
+        <button id="lbBtnGameOver" class="btn btn-blue">🏆 Lihat Papan Skor</button>
+
+    </div><!-- /#gameOverScreen -->
+
+</div><!-- /#game-container -->
+
+<!-- Game Logic -->
+<script src="app.js"></script>
+
+</body>
+</html>
